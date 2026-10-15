@@ -5,13 +5,12 @@ import "server-only";
  * it is missing. Keeping the check in one place avoids scattering
  * `process.env.X!` non-null assertions around the codebase.
  */
-export function getRequiredEnv(name: string): string {
+export function getRequiredEnv(name: string): string | null {
   const value = process.env[name];
 
   if (!value) {
-    throw new Error(
-      `Missing ${name}. Copy .env.local.example to .env.local and fill it in.`,
-    );
+    console.error(`Missing ${name}. Copy .env.local.example to .env.local and fill it in.`)
+    return null;
   }
 
   return value;
