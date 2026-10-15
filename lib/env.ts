@@ -9,7 +9,7 @@ export function getRequiredEnv(name: string): string | null {
   const value = process.env[name];
 
   if (!value) {
-    console.error(`Missing ${name}. Copy .env.local.example to .env.local and fill it in.`)
+    console.log(`Missing ${name}. Copy .env.local.example to .env.local and fill it in.`)
     return null;
   }
 
